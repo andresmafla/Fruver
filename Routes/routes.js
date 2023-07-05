@@ -1,16 +1,16 @@
-const { Router } = require('express');
-const { getProductos, postProductos, putProductos, deleteProductos } = require('../Controllers/controllers');
+import { Router } from 'express';
+import { getProductos, postProductos, putProductos, deleteProductos } from '../Controllers/controller.js';
 
 const router = Router();
 
-//definir rutas
+//Definir Rutas
 router.get("/", (req, res) => {
-    res.send("get pagina principal express")
+    res.send("GET Pagina Principal Express")
 });
 
 router.get("/productos", getProductos);
 router.post("/productos", postProductos);
-router.put("/productos/:idproducto", putProductos);
-router.delete("/productos/:idproducto", deleteProductos);
+router.put("/productos/:idProducto", putProductos);
+router.delete("/productos/:idProducto", deleteProductos);
 
-module.exports = router;
+export default router;
