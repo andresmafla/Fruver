@@ -1,12 +1,11 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../Database/database.js";
-import { Carrodecompra } from "./carrodecompra.js";
 
-const Cliente = sequelize.define(
-  "clientes",
+const Administrador = sequelize.define(
+  "administrador",
   {
     // Definicion de Atributos
-    id_cliente: {
+    id_administrador: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -20,33 +19,19 @@ const Cliente = sequelize.define(
         type: DataTypes.STRING,
         allowNull: false,
       },
-    direccion: {
+    correo_electronico: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    telefono: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    correo: {
+    contraseña: {
         type: DataTypes.STRING,
         allowNull: false,
     },
   },
   {
-    tableName: 'cliente',
+    tableName: 'administrador',
     timestamps: false,
   }
 );
 
-Cliente.hasMany(Carrodecompra,{
-  foreignKey: 'id_cliente',
-  sourceKey: 'id_cliente'
-});
-
-Carrodecompra.belongsTo(Cliente,{
-  foreignKey: 'id_cliente',
-  sourceKey: 'id_cliente'
-});
-
-export { Cliente };
+export { Administrador };

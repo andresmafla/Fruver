@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getProductos, postProductos, putProductos, deleteProductos } from '../Controllers/producto.js';
 import { getClientes, postClientes, putClientes, deleteClientes } from '../Controllers/cliente.js';
+import { deleteAdministrador, getAdministrador, postAdministrador, putAdministrador } from '../Controllers/administrados.js';
 
 const router = Router();
 
@@ -18,6 +19,11 @@ router.get("/clientes", getClientes);
 router.post("/clientes",postClientes);
 router.put("/clientes/:id_cliente",putClientes);
 router.delete("/clientes/:id_cliente", deleteClientes);
+
+router.get("/administrador", getAdministrador);
+router.post("/administrador",postAdministrador);
+router.put("/administrador/:id_administrador",putAdministrador);
+router.delete("/administrador/:id_administrador", deleteAdministrador);
 
 export default router;
 
