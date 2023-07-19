@@ -28,7 +28,7 @@ const Carrodecompra = sequelize.define(
 
   },
   {
-    tableName: 'detalledecompra',
+    tableName: 'carrodecompras',
     timestamps: false,
   }
 );

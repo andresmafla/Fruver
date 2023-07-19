@@ -18,7 +18,7 @@ const Detalledecompra = sequelize.define(
 
   },
   {
-    tableName: 'detalledecompra',
+    tableName: 'detalledecompras',
     timestamps: false,
   }
 );
