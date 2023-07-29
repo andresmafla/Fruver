@@ -11,6 +11,16 @@ const getClientes = async (req, res) => {
         res.status(400).json({ mensaje: err });
     }
 };
+
+const getCliente = async (req, res) => {
+    const {id_cliente}=req.params;
+    try {
+      const cliente = await Cliente.findByPk(id_cliente);
+      res.status(200).json([cliente]);
+    } catch (error) {
+      res.status(400).json({ mensaje: err });
+    }
+  };
   
 const postClientes = async (req, res) => {
 //res.send("POST Pagina Productos desde Controller");
@@ -61,7 +71,7 @@ const deleteClientes = async (req, res) => {
     }
 };
 
-export { getClientes, postClientes, putClientes, deleteClientes};
+export { getClientes, getCliente ,postClientes, putClientes, deleteClientes};
 
   
   

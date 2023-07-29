@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { getProductos, postProductos, putProductos, deleteProductos } from '../Controllers/producto.js';
-import { getClientes, postClientes, putClientes, deleteClientes } from '../Controllers/cliente.js';
-import { deleteAdministrador, getAdministrador, loginAdministrador, postAdministrador, putAdministrador } from '../Controllers/administrados.js';
+import { getProductos,getProducto, postProductos, putProductos, deleteProductos } from '../Controllers/producto.js';
+import { getClientes, getCliente,postClientes, putClientes, deleteClientes } from '../Controllers/cliente.js';
+import { deleteAdministrador, getAdministradores, getAdministrador, loginAdministrador, postAdministrador, putAdministrador } from '../Controllers/administrados.js';
 import { getCarro, postCarro, enviar} from '../Controllers/carro.js';
 import { verificarToken } from '../Token/token.js';
 
@@ -13,20 +13,23 @@ router.get("/",(req, res)=> {
 });
 
 router.get("/productos", getProductos);
-router.post("/productos", verificarToken,postProductos);
-router.put("/productos/:id_producto", verificarToken,putProductos);
-router.delete("/productos/:id_producto", verificarToken,deleteProductos);
+router.get("/productos/:id_producto", getProducto);
+router.post("/productos", postProductos);
+router.put("/productos/:id_producto",putProductos);
+router.delete("/productos/:id_producto",deleteProductos);
 
 router.get("/clientes", getClientes);
-router.post("/clientes",verificarToken,postClientes);
-router.put("/clientes/:id_cliente",verificarToken,putClientes);
-router.delete("/clientes/:id_cliente", verificarToken,deleteClientes);
+router.get("/clientes/:id_cliente", getCliente);
+router.post("/clientes",postClientes);
+router.put("/clientes/:id_cliente",putClientes);
+router.delete("/clientes/:id_cliente",deleteClientes);
 
 router.post("/login", loginAdministrador);
-router.get("/administrador", verificarToken,getAdministrador);
-router.post("/administrador",verificarToken,postAdministrador);
-router.put("/administrador/:id_administrador", verificarToken,putAdministrador);
-router.delete("/administrador/:id_administrador", verificarToken,deleteAdministrador);
+router.get("/administrador/:id_administrador",getAdministrador);
+router.get("/administradores",getAdministradores);
+router.post("/administrador",postAdministrador);
+router.put("/administrador/:id_administrador",putAdministrador);
+router.delete("/administrador/:id_administrador",deleteAdministrador);
 
 router.get("/carro", getCarro);
 router.post("/carro/:id_cliente", postCarro);

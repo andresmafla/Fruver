@@ -29,7 +29,7 @@ const loginAdministrador = async (req, res) => {
     }
 };
 
-const getAdministrador = async (req, res) => {
+const getAdministradores = async (req, res) => {
     //res.send("GET Pagina Productos desde Controller");
     try {
         const administrador = await Administrador.findAll();
@@ -38,6 +38,16 @@ const getAdministrador = async (req, res) => {
         res.status(400).json({ mensaje: err });
     }
 };
+
+const getAdministrador = async (req, res) => {
+    const {id_administrador}=req.params;
+    try {
+      const administrador = await Administrador.findByPk(id_administrador);
+      res.status(200).json([administrador]);
+    } catch (error) {
+      res.status(400).json({ mensaje: err });
+    }
+  };
   
 const postAdministrador = async (req, res) => {
 //res.send("POST Pagina Productos desde Controller");
@@ -86,7 +96,7 @@ const deleteAdministrador = async (req, res) => {
     }
 };
 
-export { getAdministrador, postAdministrador, putAdministrador, deleteAdministrador, loginAdministrador};
+export { getAdministradores, getAdministrador, postAdministrador, putAdministrador, deleteAdministrador, loginAdministrador};
 
   
   

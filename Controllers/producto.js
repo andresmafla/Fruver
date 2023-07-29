@@ -12,6 +12,16 @@ const getProductos = async (req, res) => {
   }
 };
 
+const getProducto = async (req, res) => {
+  const {id_producto}=req.params;
+  try {
+    const producto = await Producto.findByPk(id_producto);
+    res.status(200).json([producto]);
+  } catch (error) {
+    res.status(400).json({ mensaje: err });
+  }
+};
+
 const postProductos = async (req, res) => {
   //res.send("POST Pagina Productos desde Controller");
   const { nombre, precio, cantidad_disponible } = req.body;
@@ -58,4 +68,4 @@ const deleteProductos = async (req, res) => {
 };
 
 
-export { getProductos, postProductos, putProductos, deleteProductos};
+export { getProductos, getProducto, postProductos, putProductos, deleteProductos};
